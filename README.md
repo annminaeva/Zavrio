@@ -1,15 +1,14 @@
-# Phaser Starter
+# Zavrio
 
-![Phaser avatar studying](./src/img/study.png)
+![Zavrio](./src/img/zavrio.png)
 
-Minimal starter project to get a Phaser game environment up and running with ease.
+Zavrio game based on https://github.com/oliverbenns/phaser-starter/ 
 
 ## Install
 - Get the files by either:
-  - Forking this repository
   - Downloading a [zip/tar.gz](https://github.com/oliverbenns/phaser-starter/releases)
-  - Cloning this repository with `git clone https://github.com/oliverbenns/phaser-starter.git`
-- `cd phaser-starter`
+  - Cloning this repository with `git clone https://github.com/annminaeva/Zavrio.git`
+- `cd Zavrio`
 - `nvm install`
 - `npm install`
 
@@ -20,7 +19,3 @@ Minimal starter project to get a Phaser game environment up and running with eas
 ## Build
 - `npm run build`
 - All game files will be in `/dist`
-
-## Phaser 2
-
-If you are looking for a Phaser 2 starter environment, you can download the [1.0.1 release](https://github.com/oliverbenns/phaser-starter/releases/1.0.1)
