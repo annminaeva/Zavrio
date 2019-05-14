@@ -6,7 +6,7 @@ Zavrio game based on https://github.com/oliverbenns/phaser-starter/
 
 ## Install
 - Get the files by either:
-  - Downloading a [zip/tar.gz](https://github.com/oliverbenns/phaser-starter/releases)
+  - Downloading a [zip/tar.gz](https://github.com/annminaeva/Zavrio/archive/master.zip)
   - Cloning this repository with `git clone https://github.com/annminaeva/Zavrio.git`
 - `cd Zavrio`
 - `nvm install`
