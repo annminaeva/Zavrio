@@ -27,8 +27,8 @@ const config = {
   physics: {
     default: 'arcade',
     arcade: {
-        gravity: { y: 300 },
-        debug: false
+      gravity: { y: 300 },
+      debug: false
     }
   },
   scene: { preload, create, update },
@@ -71,20 +71,28 @@ function create() {
 
   this.add.image(centerX + 10 , centerY, 'bg');
 
-  platforms.create(-50, 500, 'green_tile')/*.setScale(0.5)*/.refreshBody();
+  platforms.create(-50, 500, 'green_tile').refreshBody();
 
-  platforms.create(375, 480, 'z_tile')/*.setScale(0.8)*/.refreshBody();
-  platforms.create(500, 480, 'z_tile')/*.setScale(0.8)*/.refreshBody();
-  platforms.create(625, 480, 'z_tile')/*.setScale(0.8)*/.refreshBody();
+  platforms.create(375, 480, 'z_tile').refreshBody();
+  platforms.create(500, 480, 'z_tile').refreshBody();
+  platforms.create(625, 480, 'z_tile').refreshBody();
 
-  platforms.create(1050, 500, 'green_tile')/*.setScale(0.5)*/.refreshBody();
+  platforms.create(1050, 500, 'green_tile').refreshBody();
 
   player = this.physics.add.sprite(50, 350, 'zavrio_anim');
 
   player.setBounce(0.2);
   player.setCollideWorldBounds(true);
 
-  player.body.setGravityY(300);
+  player.body.setGravityY(1200);
+
+
+
+  // player.acceleration = 600;
+  // player.body.maxVelocity.x = 200;
+  // player.body.maxVelocity.y = 500;
+
+
 
   this.physics.add.collider(player, platforms);
 
@@ -146,23 +154,25 @@ function update() {
 
   if (cursors.left.isDown || left)
   {
-    player.setVelocityX(-200);
+    player.setVelocityX(-300);
     // player.anims.play('left', true);
   }
   else if (cursors.right.isDown || right)
   {
-    player.setVelocityX(200);
+    player.setVelocityX(300);
+    player.body.setAccelerationX(600);
     (spaceBar.isDown||up) ? player.anims.play('jump') : player.anims.play('right', true);
   }
   else
   {
     player.setVelocityX(0);
+     player.body.setAccelerationX(0);
     (spaceBar.isDown||up) ? player.anims.play('jump') : player.anims.play('stay');
   }
 
   if ( (spaceBar.isDown||up) && player.body.touching.down)
   {
-    player.setVelocityY(-430);
+    player.setVelocityY(-700);
     player.anims.play('jump');
   }
 
