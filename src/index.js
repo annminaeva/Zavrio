@@ -2,7 +2,7 @@ import 'phaser';
 import pkg from 'phaser/package.json';
 
 import bg from 'img/bg.png';
-
+//import grid from 'img/grid.png';
 
 import greenTile from 'img/green_tile.png';
 import zTile from 'img/z_tile.png';
@@ -43,6 +43,7 @@ let up = false, left = false, right = false;
 function preload() {
 
   this.load.image('bg', bg);
+ // this.load.image('grid', grid);
 
   this.load.image('green_tile', greenTile);
   this.load.image('z_tile', zTile);
@@ -134,6 +135,9 @@ function create() {
     frameRate: 20,
    // repeat: -1
   });
+
+
+ //  this.add.image(centerX , centerY, 'grid');
 
 
 }
