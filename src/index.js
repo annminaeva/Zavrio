@@ -31,7 +31,7 @@ const config = {
 
 const game = new Phaser.Game(config);
 
-let platforms, player, cursors, buttons;
+let platforms, player, cursors, buttons, spaceBar;
 
 let up = false, left = false, right = false;
 
@@ -80,6 +80,8 @@ function create() {
   this.physics.add.collider(player, platforms);
 
   cursors = this.input.keyboard.createCursorKeys();
+
+  spaceBar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
 
   buttons = this.physics.add.staticGroup();
@@ -130,7 +132,7 @@ function update() {
      // player.anims.play('turn');
   }
 
-  if ( (cursors.up.isDown||up) && player.body.touching.down)
+  if ( (spaceBar.isDown||up) && player.body.touching.down)
   {
       player.setVelocityY(-430);
   }
