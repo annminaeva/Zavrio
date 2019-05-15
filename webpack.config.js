@@ -21,9 +21,13 @@ const config = {
         },
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpe?g|gif|svg)$/,
         use: 'file-loader',
       },
+      // {
+      //   test: /\.svg$/,
+      //   loader: 'svg-inline-loader'
+      // },
       {
         test: /\.(vert|frag)$/,
         use: 'raw-loader',

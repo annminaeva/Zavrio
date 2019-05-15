@@ -1,9 +1,14 @@
 import 'phaser';
 import pkg from 'phaser/package.json';
+
+import bg from 'img/bg.png';
+
+
 import greenTile from 'img/green_tile.png';
 import zTile from 'img/z_tile.png';
 
 import Zavrio from 'img/zavrio.png';
+import ZavrioAnim from 'img/zavrio_anim.png';
 
 import buttonSpace from 'img/btn_space.png';
 import controls from 'img/controls.png';
@@ -37,9 +42,13 @@ let up = false, left = false, right = false;
 
 function preload() {
 
+  this.load.image('bg', bg);
+
   this.load.image('green_tile', greenTile);
   this.load.image('z_tile', zTile);
+
   this.load.image('zavrio', Zavrio);
+  this.load.spritesheet('zavrio_anim', ZavrioAnim, { frameWidth: 80, frameHeight: 80 });
 
   this.load.image('btn_space', buttonSpace);
 
@@ -59,7 +68,7 @@ function create() {
 
   platforms = this.physics.add.staticGroup();
 
-  //this.add.image(centerX, centerY * 1.2, 'green_tile');
+  this.add.image(centerX + 10 , centerY, 'bg');
 
   platforms.create(-50, 500, 'green_tile')/*.setScale(0.5)*/.refreshBody();
 
@@ -70,7 +79,7 @@ function create() {
   platforms.create(1050, 500, 'green_tile')/*.setScale(0.5)*/.refreshBody();
 
 
-  player = this.physics.add.sprite(50, 350, 'zavrio');
+  player = this.physics.add.sprite(50, 350, 'zavrio_anim');
 
   player.setBounce(0.2);
   player.setCollideWorldBounds(true);
@@ -106,6 +115,29 @@ function create() {
              .on('pointerup', () => left = false );
 
 
+
+  this.anims.create({
+    key: 'right',
+    frames: this.anims.generateFrameNumbers('zavrio_anim', { start: 0, end: 1 }),
+    frameRate: 10,
+    repeat: -1
+  });
+
+  this.anims.create({
+    key: 'stay',
+    frames: [ { key: 'zavrio_anim', frame: 0 } ],
+    frameRate: 20,
+   // repeat: -1
+  });
+
+   this.anims.create({
+    key: 'jump',
+    frames: [ { key: 'zavrio_anim', frame: 2 } ],
+    frameRate: 20,
+   // repeat: -1
+  });
+
+
   
 
  
@@ -116,25 +148,25 @@ function update() {
   if (cursors.left.isDown || left)
   {
       player.setVelocityX(-200);
-
-    //  player.anims.play('left', true);
+     // player.anims.play('left', true);
   }
   else if (cursors.right.isDown || right)
   {
       player.setVelocityX(200);
 
-    //  player.anims.play('right', true);
+      player.anims.play('right', true);
   }
   else
   {
       player.setVelocityX(0);
 
-     // player.anims.play('turn');
+      player.anims.play('stay');
   }
 
   if ( (spaceBar.isDown||up) && player.body.touching.down)
   {
       player.setVelocityY(-430);
+      player.anims.play('jump');
   }
 
 
