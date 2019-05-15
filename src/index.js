@@ -78,7 +78,6 @@ function create() {
 
   platforms.create(1050, 500, 'green_tile')/*.setScale(0.5)*/.refreshBody();
 
-
   player = this.physics.add.sprite(50, 350, 'zavrio_anim');
 
   player.setBounce(0.2);
@@ -115,7 +114,6 @@ function create() {
              .on('pointerup', () => left = false );
 
 
-
   this.anims.create({
     key: 'right',
     frames: this.anims.generateFrameNumbers('zavrio_anim', { start: 0, end: 1 }),
@@ -138,35 +136,30 @@ function create() {
   });
 
 
-  
-
- 
 }
 
 function update() {
 
   if (cursors.left.isDown || left)
   {
-      player.setVelocityX(-200);
-     // player.anims.play('left', true);
+    player.setVelocityX(-200);
+    // player.anims.play('left', true);
   }
   else if (cursors.right.isDown || right)
   {
-      player.setVelocityX(200);
-
-      player.anims.play('right', true);
+    player.setVelocityX(200);
+    (spaceBar.isDown||up) ? player.anims.play('jump') : player.anims.play('right', true);
   }
   else
   {
-      player.setVelocityX(0);
-
-      player.anims.play('stay');
+    player.setVelocityX(0);
+    (spaceBar.isDown||up) ? player.anims.play('jump') : player.anims.play('stay');
   }
 
   if ( (spaceBar.isDown||up) && player.body.touching.down)
   {
-      player.setVelocityY(-430);
-      player.anims.play('jump');
+    player.setVelocityY(-430);
+    player.anims.play('jump');
   }
 
 
