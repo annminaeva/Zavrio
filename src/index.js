@@ -15,7 +15,8 @@ import controls from 'img/controls.png';
 import controlRight from 'img/control_right.png';
 import controlLeft from 'img/control_left.png';
 
-
+import singleRect from 'img/rect_1.png';
+import doubleRect from 'img/rect_2.png';
 
 const width = 1000;
 const height = 560;
@@ -57,6 +58,9 @@ function preload() {
   this.load.image('control_right', controlRight);
   this.load.image('control_left', controlLeft);
 
+  this.load.image('rect_1', singleRect);
+  this.load.image('rect_2', doubleRect);
+
 }
 
 function create() {
@@ -71,13 +75,21 @@ function create() {
 
   this.add.image(centerX + 10 , centerY, 'bg');
 
-  platforms.create(20, 500, 'green_tile').refreshBody();
+  platforms.create(20, 500, 'green_tile'); //.refreshBody();
 
-  platforms.create(400, 480, 'z_tile').refreshBody();
-  platforms.create(520, 480, 'z_tile').refreshBody();
-  platforms.create(640, 480, 'z_tile').refreshBody();
+  platforms.create(400, 480, 'z_tile');
+  platforms.create(520, 480, 'z_tile');
+  platforms.create(640, 480, 'z_tile');
 
-  platforms.create(1020, 500, 'green_tile').refreshBody();
+  platforms.create(1020, 500, 'green_tile');
+
+  platforms.create(300, 340, 'rect_1');
+  platforms.create(820, 340, 'rect_1');
+
+  platforms.create(440, 260, 'rect_2');
+  platforms.create(640, 260, 'rect_2');
+  platforms.create(520, 100, 'rect_2');
+  platforms.create(800, 140, 'rect_2');
 
   player = this.physics.add.sprite(50, 350, 'zavrio_anim');
 
@@ -160,13 +172,13 @@ function update() {
   else if (cursors.right.isDown || right)
   {
     player.setVelocityX(300);
-    player.body.setAccelerationX(600);
+    //player.body.setAccelerationX(600);
     (spaceBar.isDown||up) ? player.anims.play('jump') : player.anims.play('right', true);
   }
   else
   {
     player.setVelocityX(0);
-     player.body.setAccelerationX(0);
+   //  player.body.setAccelerationX(0);
     (spaceBar.isDown||up) ? player.anims.play('jump') : player.anims.play('stay');
   }
 
