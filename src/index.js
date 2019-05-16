@@ -84,7 +84,7 @@ function create() {
   player.setBounce(0.2);
   player.setCollideWorldBounds(true);
 
-  player.body.setGravityY(1200);
+  player.body.setGravityY(1500);
 
 
 
