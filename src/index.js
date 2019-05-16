@@ -75,21 +75,21 @@ function create() {
 
   this.add.image(centerX + 10 , centerY, 'bg');
 
-  platforms.create(20, 500, 'green_tile'); //.refreshBody();
+  platforms.create(-60, 500, 'green_tile'); //.refreshBody();
 
-  platforms.create(400, 480, 'z_tile');
-  platforms.create(520, 480, 'z_tile');
+  platforms.create(320, 480, 'z_tile');
+  platforms.create(480, 480, 'z_tile');
   platforms.create(640, 480, 'z_tile');
 
-  platforms.create(1020, 500, 'green_tile');
+  platforms.create(1060, 500, 'green_tile');
 
   platforms.create(300, 340, 'rect_1');
-  platforms.create(820, 340, 'rect_1');
+  platforms.create(860, 340, 'rect_1');
 
-  platforms.create(440, 260, 'rect_2');
-  platforms.create(640, 260, 'rect_2');
-  platforms.create(520, 100, 'rect_2');
-  platforms.create(800, 140, 'rect_2');
+  platforms.create(440, 220, 'rect_2');
+  platforms.create(660, 220, 'rect_1');
+  platforms.create(840, 100, 'rect_2');
+  // platforms.create(800, 140, 'rect_2');
 
   player = this.physics.add.sprite(50, 350, 'zavrio_anim');
 
