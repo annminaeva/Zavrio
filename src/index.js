@@ -71,13 +71,13 @@ function create() {
 
   this.add.image(centerX + 10 , centerY, 'bg');
 
-  platforms.create(-50, 500, 'green_tile').refreshBody();
+  platforms.create(20, 500, 'green_tile').refreshBody();
 
-  platforms.create(375, 480, 'z_tile').refreshBody();
-  platforms.create(500, 480, 'z_tile').refreshBody();
-  platforms.create(625, 480, 'z_tile').refreshBody();
+  platforms.create(400, 480, 'z_tile').refreshBody();
+  platforms.create(520, 480, 'z_tile').refreshBody();
+  platforms.create(640, 480, 'z_tile').refreshBody();
 
-  platforms.create(1050, 500, 'green_tile').refreshBody();
+  platforms.create(1020, 500, 'green_tile').refreshBody();
 
   player = this.physics.add.sprite(50, 350, 'zavrio_anim');
 
@@ -103,7 +103,7 @@ function create() {
 
   buttons = this.physics.add.staticGroup();
 
-  const upButton = buttons.create(100, 510, 'btn_space'); //this.add.text(100, 100, 'Hello Phaser!', { fill: '#0f0' });
+  const upButton = buttons.create(80, 520, 'btn_space'); //this.add.text(100, 100, 'Hello Phaser!', { fill: '#0f0' });
   upButton.setInteractive({ useHandCursor: true })
              .on('pointerdown', () => up = true )
              .on('pointerup', () => up = false );
