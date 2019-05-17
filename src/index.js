@@ -18,7 +18,7 @@ import controlLeft from 'img/control_left.png';
 import singleRect from 'img/rect_1.png';
 import doubleRect from 'img/rect_2.png';
 
-const width = 1000;
+const width = 2666;
 const height = 560;
 
 const config = {
@@ -83,10 +83,12 @@ function create() {
 
   platforms.create(40*17, 11*40, 'green_tile').setOrigin(0, 0).refreshBody();
 
-  // platforms.create(300, 340, 'rect_1');
+  platforms.create(40*20, 8*40, 'rect_1').setOrigin(0, 0).refreshBody();
   // platforms.create(860, 340, 'rect_1');
 
-  // platforms.create(440, 220, 'rect_2');
+  platforms.create(24*40, 5*40, 'rect_2').setOrigin(0, 0).refreshBody();
+
+  platforms.create(30*40, 5*40, 'rect_1').setOrigin(0, 0).refreshBody();
   // platforms.create(660, 220, 'rect_1');
   // platforms.create(840, 100, 'rect_2');
 
@@ -163,11 +165,11 @@ function create() {
  // this.cameras.main.x = 0;
  // this.cameras.main.y = 0;
 
- //  this.cameras.main.width = 1000;
- //  this.cameras.main.height = 560;
+  this.cameras.main.width = 1000;
+  this.cameras.main.height = 560;
 
 
-  this.cameras.main.setBounds(0, 0, 1000, 560);
+ this.cameras.main.setBounds(0, 0, 2666, 560);
 
 
  this.cameras.main.startFollow(player);
