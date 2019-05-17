@@ -12,6 +12,10 @@ Zavrio game based on https://github.com/oliverbenns/phaser-starter/
 - `nvm install`
 - `npm install`
 
+Or:
+
+- Open folder in terminal and run `bash start.sh`
+
 ## Development
 - `npm start`
 - Open `http://localhost:8080`

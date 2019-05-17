@@ -159,6 +159,8 @@ function create() {
 
  //  this.add.image(centerX , centerY, 'grid');
 
+ // this.cameras.main.startFollow(player);
+
 
 }
 
