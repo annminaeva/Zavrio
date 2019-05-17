@@ -7,6 +7,8 @@ import bg from 'img/bg.png';
 import greenTile from 'img/green_tile.png';
 import zTile from 'img/z_tile.png';
 
+import xxxTile from 'img/xxx.png';
+
 import Zavrio from 'img/zavrio.png';
 import ZavrioAnim from 'img/zavrio_anim.png';
 
@@ -37,7 +39,7 @@ const config = {
 
 const game = new Phaser.Game(config);
 
-let platforms, player, cursors, buttons, spaceBar;
+let platforms, player, cursors, buttons, spaceBar, movingPlatform, movingPlatform2;
 
 let up = false, left = false, right = false;
 
@@ -48,6 +50,7 @@ function preload() {
 
   this.load.image('green_tile', greenTile);
   this.load.image('z_tile', zTile);
+  this.load.image('xxx_tile', xxxTile);
 
   this.load.image('zavrio', Zavrio);
   this.load.spritesheet('zavrio_anim', ZavrioAnim, { frameWidth: 80, frameHeight: 80 });
@@ -73,24 +76,40 @@ function create() {
 
   platforms = this.physics.add.staticGroup();
 
+  console.log(game)
+
   this.add.image(0, 0, 'bg').setOrigin(0, 0);
 
   platforms.create(-40*9, 11*40, 'green_tile').setOrigin(0, 0).refreshBody();
-
   platforms.create(40*7, 11*40, 'z_tile').setOrigin(0, 0).refreshBody();
   platforms.create(40*10.5, 11*40, 'z_tile').setOrigin(0, 0).refreshBody();
   platforms.create(40*14, 11*40, 'z_tile').setOrigin(0, 0).refreshBody();
-
   platforms.create(40*17, 11*40, 'green_tile').setOrigin(0, 0).refreshBody();
-
   platforms.create(40*20, 8*40, 'rect_1').setOrigin(0, 0).refreshBody();
-  // platforms.create(860, 340, 'rect_1');
-
   platforms.create(24*40, 5*40, 'rect_2').setOrigin(0, 0).refreshBody();
-
   platforms.create(30*40, 5*40, 'rect_1').setOrigin(0, 0).refreshBody();
-  // platforms.create(660, 220, 'rect_1');
-  // platforms.create(840, 100, 'rect_2');
+
+
+
+  // platforms.create(1320, 360, 'xxx_tile').setOrigin(0, 0).refreshBody();
+  // platforms.create(1920, 480, 'xxx_tile').setOrigin(0, 0).refreshBody();
+
+  movingPlatform = this.physics.add.image(1320, 360, 'xxx_tile').setOrigin(0, 0);
+
+  movingPlatform.setImmovable(true);
+  movingPlatform.body.allowGravity = false;
+  movingPlatform.setVelocityX(150);
+
+
+  movingPlatform2 = this.physics.add.image(1920, 480, 'xxx_tile').setOrigin(0, 0);
+
+  movingPlatform2.setImmovable(true);
+  movingPlatform2.body.allowGravity = false;
+  movingPlatform2.setVelocityX(150);
+
+
+
+  platforms.create(2080, 11*40, 'green_tile').setOrigin(0, 0).refreshBody();
 
 
   player = this.physics.add.sprite(0, 40, 'zavrio_anim').setOrigin(0, 0) ;
@@ -109,6 +128,8 @@ function create() {
 
 
   this.physics.add.collider(player, platforms);
+  this.physics.add.collider(player, movingPlatform);
+   this.physics.add.collider(player, movingPlatform2);
 
   cursors = this.input.keyboard.createCursorKeys();
 
@@ -174,6 +195,8 @@ function create() {
 
  this.cameras.main.startFollow(player);
 
+ this.cameras.main.setBackgroundColor('#ffffff')
+
 
 }
 
@@ -202,6 +225,26 @@ function update() {
     player.setVelocityY(-700);
     player.anims.play('jump');
   }
+
+
+  //moving platforms
+  if (movingPlatform.x >= 1900)
+  {
+      movingPlatform.setVelocityX(-150);
+  }
+  else if (movingPlatform.x <= 1320)
+  {
+      movingPlatform.setVelocityX(150);
+  };
+
+  if (movingPlatform2.x >= 1920)
+  {
+      movingPlatform2.setVelocityX(-150);
+  }
+  else if (movingPlatform2.x <= 1320)
+  {
+      movingPlatform2.setVelocityX(150);
+  };
 
 
 }
