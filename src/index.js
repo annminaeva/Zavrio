@@ -73,25 +73,25 @@ function create() {
 
   platforms = this.physics.add.staticGroup();
 
-  this.add.image(centerX + 10 , centerY, 'bg');
+  this.add.image(0, 0, 'bg').setOrigin(0, 0);
 
-  platforms.create(-60, 500, 'green_tile'); //.refreshBody();
+  platforms.create(-40*9, 11*40, 'green_tile').setOrigin(0, 0).refreshBody();
 
-  platforms.create(320, 480, 'z_tile');
-  platforms.create(480, 480, 'z_tile');
-  platforms.create(640, 480, 'z_tile');
+  platforms.create(40*7, 11*40, 'z_tile').setOrigin(0, 0).refreshBody();
+  platforms.create(40*10.5, 11*40, 'z_tile').setOrigin(0, 0).refreshBody();
+  platforms.create(40*14, 11*40, 'z_tile').setOrigin(0, 0).refreshBody();
 
-  platforms.create(1060, 500, 'green_tile');
+  platforms.create(40*17, 11*40, 'green_tile').setOrigin(0, 0).refreshBody();
 
-  platforms.create(300, 340, 'rect_1');
-  platforms.create(860, 340, 'rect_1');
+  // platforms.create(300, 340, 'rect_1');
+  // platforms.create(860, 340, 'rect_1');
 
-  platforms.create(440, 220, 'rect_2');
-  platforms.create(660, 220, 'rect_1');
-  platforms.create(840, 100, 'rect_2');
-  // platforms.create(800, 140, 'rect_2');
+  // platforms.create(440, 220, 'rect_2');
+  // platforms.create(660, 220, 'rect_1');
+  // platforms.create(840, 100, 'rect_2');
 
-  player = this.physics.add.sprite(50, 350, 'zavrio_anim');
+
+  player = this.physics.add.sprite(0, 40, 'zavrio_anim').setOrigin(0, 0) ;
 
   player.setBounce(0.2);
   player.setCollideWorldBounds(true);
@@ -159,7 +159,18 @@ function create() {
 
  //  this.add.image(centerX , centerY, 'grid');
 
- // this.cameras.main.startFollow(player);
+
+ // this.cameras.main.x = 0;
+ // this.cameras.main.y = 0;
+
+ //  this.cameras.main.width = 1000;
+ //  this.cameras.main.height = 560;
+
+
+  this.cameras.main.setBounds(0, 0, 1000, 560);
+
+
+ this.cameras.main.startFollow(player);
 
 
 }
